@@ -41,12 +41,12 @@
 
   - name: pull apachepi image
     docker_image:
-      name: controller.metcarob-local.com:5000/apachepi:v1
+      name: controller.danlab.local:5000/apachepi:v1
 
   - name: Create apache docker container
     docker_container:
       name: "{{ service.shortname }}"
-      image: controller.metcarob-local.com:5000/apachepi:v1
+      image: controller.danlab.local:5000/apachepi:v1
       ports:
       - "80:80"
 
