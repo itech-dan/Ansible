@@ -5,31 +5,28 @@
     service:
       longname: Apache Webserver
       shortname: apachepi_container
-
+      ansible_python_interpreter: /usr/bin/python3
   tasks:
-#  - name: python setup tools
-#    apt: 
-#      pkg: python-setuptools
-#      state: present
 
-#  - name: install pip
-#    easy_install:
-#      name: pip
-#      state: latest
+  - name: python setup tools
+    apt: 
+      pkg: python-setuptools
+      state: present
+
+  - name: install pip
+    apt:
+      name: python-pip
+      state: latest
 
   - name: python3
     apt:
       pkg: python3
-      state: present
+      state: latest
 
   - name: python3-pip
     apt:
       pkg: python3-pip
       state: present
-
-#  - name: install docker-py
-#    easy_install:
-#      name: docker-py
 
   - name: update pip3 using easyinstall
     shell: easy_install3 -U pip
@@ -38,6 +35,10 @@
     pip:
       name: docker
       executable: pip3
+
+#  - name: install docker-py
+#    easy_install:
+#      name: docker-py
 
   - name: pull apachepi image
     docker_image:

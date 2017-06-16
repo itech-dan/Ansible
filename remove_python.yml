@@ -1,0 +1,9 @@
+- hosts: clusternodes
+  become: true
+
+  tasks:
+
+    - name: uninstall python
+      apt:
+        name: python-pip
+        state: absent
